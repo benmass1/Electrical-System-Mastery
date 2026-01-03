@@ -1,1 +1,197 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masanja Electrical Master | Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #05070a;
+            --card-bg: #0f172a;
+            --electric-blue: #00d2ff;
+            --warning-orange: #fbbf24;
+            --danger-red: #ef4444;
+            --text-main: #f8fafc;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Animated Background Spark */
+        .header-bg {
+            height: 250px;
+            background: linear-gradient(135deg, #1e1b4b 0%, #05070a 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 2px solid var(--electric-blue);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.2);
+        }
+
+        h1 { margin: 0; font-size: 2.5rem; font-weight: 800; letter-spacing: -1px; }
+        .subtitle { color: var(--electric-blue); font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; }
+
+        .container {
+            max-width: 1200px;
+            margin: -50px auto 50px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--electric-blue);
+            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.1);
+        }
+
+        .card h2 {
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon { font-size: 1.5rem; }
+
+        .file-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .file-item {
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            margin-bottom: 8px;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .file-item:hover {
+            background: rgba(0, 210, 255, 0.1);
+            color: var(--electric-blue);
+        }
+
+        .badge {
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: #1e293b;
+            color: #94a3b8;
+        }
+
+        /* Multimedia Display Area */
+        .viewer-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            background: #111;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .schematic-box {
+            width: 100%;
+            height: 400px;
+            background: #1e1e1e;
+            border: 2px dashed #333;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #475569;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-bg">
+        <h1>ELECTRICAL SYSTEM MASTER</h1>
+        <div class="subtitle">SYSTEM_STATUS: STABLE // VOLTAGE: 12.6V // BUS_LINK: ACTIVE</div>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2><span class="icon">⚡</span> Fundamentals</h2>
+            <div class="file-list">
+                <div class="file-item">basic_units_V_I_R.md <span class="badge">TXT</span></div>
+                <div class="file-item">ohms_law_calcs.py <span class="badge">CODE</span></div>
+                <div class="file-item">circuit_logic.pdf <span class="badge">PDF</span></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon">🔋</span> Power Source</h2>
+            <div class="file-list">
+                <div class="file-item">battery_maint.md <span class="badge">TXT</span></div>
+                <div class="file-item">alternator_diag.png <span class="badge">IMG</span></div>
+                <div class="file-item">starter_logic.md <span class="badge">TXT</span></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon">🔗</span> CAN-BUS Data</h2>
+            <div class="file-list">
+                <div class="file-item">high_low_signals.md <span class="badge">TXT</span></div>
+                <div class="file-item">j1939_standards.pdf <span class="badge">PDF</span></div>
+                <div class="file-item">network_map.json <span class="badge">DATA</span></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon">🔍</span> Diagnostics</h2>
+            <div class="file-list">
+                <div class="file-item">voltage_drop_test.md <span class="badge">PROC</span></div>
+                <div class="file-item">dtc_error_codes.json <span class="badge">JSON</span></div>
+                <div class="file-item">parasitic_drain.md <span class="badge">PROC</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="viewer-section">
+        <h2 style="color: var(--warning-orange);">Interactive Schematic Viewer</h2>
+        <p>Bofya faili la picha (IMG) ili kuona muundo wa waya hapa.</p>
+        <div class="schematic-box">
+            <p style="color: #555;">[Picha ya Ramani ya Umeme Itatokea Hapa]</p>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Masanja Systems - Advanced Heavy Equipment Training
+    </footer>
+
+</body>
+</html>
 
