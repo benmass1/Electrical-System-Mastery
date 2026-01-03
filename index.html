@@ -3,191 +3,260 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Masanja Systems | Future of Engineering</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Masanja Business Suite | Smart Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #00e5ff;
-            --accent: #ffb700;
-            --bg: #0a0c10;
-            --card-bg: #161b22;
+            --primary: #2563eb;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --dark: #0f172a;
+            --bg: #f8fafc;
+            --text-main: #1e293b;
+            --sidebar: #ffffff;
         }
 
         body {
             margin: 0;
             font-family: 'Inter', sans-serif;
             background-color: var(--bg);
-            color: #e6edf3;
-            line-height: 1.6;
+            color: var(--text-main);
+            display: flex;
+            height: 100vh;
         }
 
-        /* Hero Section */
-        header {
-            height: 80vh;
-            background: linear-gradient(rgba(10, 12, 16, 0.8), rgba(10, 12, 16, 0.8)), 
-                        url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
+        /* Sidebar Styling */
+        .sidebar {
+            width: 260px;
+            background-color: var(--sidebar);
+            border-right: 1px solid #e2e8f0;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            border-bottom: 3px solid var(--primary);
+            padding: 20px;
         }
 
-        header h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            margin: 0;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-        }
-
-        header p {
-            font-size: 1.2rem;
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
             color: var(--primary);
-            max-width: 700px;
-            margin: 20px auto;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        /* Product Grid */
-        .container {
-            max-width: 1200px;
-            margin: -100px auto 50px;
-            padding: 0 20px;
+        .nav-link {
+            text-decoration: none;
+            color: #64748b;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            font-weight: 500;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: #eff6ff;
+            color: var(--primary);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 30px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        /* Statistics Cards */
+        .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
         }
 
-        .product-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 40px 30px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: 0.4s;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid #f1f5f9;
         }
 
-        .product-card:hover {
-            transform: translateY(-15px);
-            border-color: var(--primary);
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
+        .stat-card h3 {
+            margin: 0;
+            font-size: 0.875rem;
+            color: #64748b;
+            text-transform: uppercase;
         }
 
-        .icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
+        .stat-card .value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin: 10px 0;
             display: block;
         }
 
-        .product-card h3 {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--accent);
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-        }
-
-        .product-card p {
-            font-size: 0.9rem;
-            color: #8b949e;
-        }
-
-        .price-tag {
-            display: inline-block;
-            margin-top: 20px;
-            font-weight: bold;
-            color: #fff;
-            background: rgba(0, 229, 255, 0.1);
-            padding: 5px 15px;
-            border-radius: 50px;
-            border: 1px solid var(--primary);
-        }
-
-        /* Action Section */
-        .cta-section {
-            text-align: center;
-            padding: 100px 20px;
-        }
-
-        .btn-buy {
-            padding: 15px 40px;
-            font-family: 'Orbitron', sans-serif;
-            background: var(--primary);
-            color: #000;
-            border: none;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .btn-buy:hover {
-            background: #fff;
-            box-shadow: 0 0 30px var(--primary);
-        }
-
-        footer {
-            text-align: center;
-            padding: 50px;
-            border-top: 1px solid #30363d;
+        .stat-card .trend {
             font-size: 0.8rem;
-            color: #484f58;
+            font-weight: 600;
+        }
+
+        /* Table Section */
+        .section-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th {
+            text-align: left;
+            color: #64748b;
+            padding: 12px;
+            border-bottom: 2px solid #f1f5f9;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .status {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status.in-stock { background: #dcfce7; color: #166534; }
+        .status.low-stock { background: #fef9c3; color: #854d0e; }
+
+        .btn-add {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>MASANJA SYSTEMS</h1>
-        <p>Tunabadilisha jinsi unavyofanya kazi kupitia Mifumo ya Kileo ya AI na Uhandisi.</p>
-        <a href="#store" class="btn-buy">ANGALIA MIFUMO</a>
-    </header>
-
-    <div class="container" id="store">
-        <div class="product-card">
-            <span class="icon">🤖</span>
-            <h3>AI-TRANSLATE PRO</h3>
-            <p>Tafsiri vitabu na nyaraka zako za kiufundi kwenda Kiswahili sanifu kwa sekunde chache.</p>
-            <div class="price-tag">Tsh 50,000 / Leseni</div>
-        </div>
-
-        <div class="product-card">
-            <span class="icon">⚡</span>
-            <h3>VOLT-X DIAGNOSTIC</h3>
-            <p>Suluhisho la umeme wa mashine nzito. Pata maana ya Error Codes na utatuzi wake papo hapo.</p>
-            <div class="price-tag">Tsh 120,000 / Leseni</div>
-        </div>
-
-        <div class="product-card">
-            <span class="icon">💧</span>
-            <h3>HYDRA-FLOW PRO</h3>
-            <p>Usimamizi wa kisasa wa mifumo ya hydraulic. Punguza hatari ya kupasuka kwa pampu.</p>
-            <div class="price-tag">Tsh 85,000 / Leseni</div>
-        </div>
-
-        <div class="product-card">
-            <span class="icon">🛰️</span>
-            <h3>FLEET TRACKER</h3>
-            <p>Fuatilia mitambo yako ukiwa nyumbani. Jua matumizi ya mafuta na eneo la mashine.</p>
-            <div class="price-tag">Tsh 200,000 / Seti</div>
-        </div>
+    <div class="sidebar">
+        <div class="logo">📦 MASANJA B-SUITE</div>
+        <nav>
+            <a href="#" class="nav-link active">🏠 Dashboard</a>
+            <a href="#" class="nav-link">🛒 Point of Sale (POS)</a>
+            <a href="#" class="nav-link">📦 Stoo / Inventory</a>
+            <a href="#" class="nav-link">📊 Ripoti za Mauzo</a>
+            <a href="#" class="nav-link">👥 Watumiaji</a>
+            <a href="#" class="nav-link">⚙️ Mipangilio</a>
+        </nav>
     </div>
 
-    <div class="cta-section">
-        <h2 style="font-family: 'Orbitron';">Je, unahitaji mfumo maalum?</h2>
-        <p>Tunatengeneza mifumo kulingana na mahitaji ya biashara yako.</p>
-        <br>
-        <a href="mailto:info@masanja.com" class="btn-buy" style="background: var(--accent);">WASILIANA NASI</a>
-    </div>
+    <div class="main-content">
+        <div class="header">
+            <div>
+                <h1 style="margin:0">Dashboard Kuu</h1>
+                <p style="color:#64748b">Habari, Karibu kwenye mfumo wako wa biashara.</p>
+            </div>
+            <div class="user-profile">
+                <span>Masanja Admin</span>
+                <div style="width:40px; height:40px; background:#e2e8f0; border-radius:50%"></div>
+            </div>
+        </div>
 
-    <footer>
-        &copy; 2026 MASANJA SYSTEMS LTD // ARUSHA, TANZANIA // SMART SOLUTIONS FOR HEAVY MACHINERY
-    </footer>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Mauzo ya Leo</h3>
+                <span class="value">Tsh 450,000</span>
+                <span class="trend" style="color:var(--success)">+12% toka jana</span>
+            </div>
+            <div class="stat-card">
+                <h3>Faida ya Leo</h3>
+                <span class="value">Tsh 120,000</span>
+                <span class="trend" style="color:var(--success)">+5.4% toka jana</span>
+            </div>
+            <div class="stat-card">
+                <h3>Wateja Wapya</h3>
+                <span class="value">24</span>
+                <span class="trend" style="color:var(--primary)">Wateja waaminifu</span>
+            </div>
+            <div class="stat-card">
+                <h3>Bidhaa Low Stock</h3>
+                <span class="value" style="color:var(--danger)">8</span>
+                <span class="trend" style="color:var(--warning)">Inahitaji kuagizwa</span>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2>Bidhaa Ghalani (Inventory)</h2>
+                <button class="btn-add">+ Ongeza Bidhaa</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Bidhaa</th>
+                        <th>Category</th>
+                        <th>Bei (Sale)</th>
+                        <th>Idadi</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Engine Oil - 5L</td>
+                        <td>Vipuri</td>
+                        <td>Tsh 45,000</td>
+                        <td>15</td>
+                        <td><span class="status in-stock">In Stock</span></td>
+                    </tr>
+                    <tr>
+                        <td>Hydraulic Filter</td>
+                        <td>Vipuri</td>
+                        <td>Tsh 120,000</td>
+                        <td>3</td>
+                        <td><span class="status low-stock">Low Stock</span></td>
+                    </tr>
+                    <tr>
+                        <td>Brake Pads - CAT</td>
+                        <td>Mengineyo</td>
+                        <td>Tsh 85,000</td>
+                        <td>25</td>
+                        <td><span class="status in-stock">In Stock</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
 </body>
 </html>
